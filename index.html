@@ -1,49 +1,46 @@
-<!DOCTYPE html>	
+<!DOCTYPE html>
 <html lang="en-us">
+
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<script type="text/javascript" src="assets/javascript/game.js"></script>
-
-	<title>Hangman Game</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <title>Hangman Game</title>
 </head>
-<body onload = "newGame()">
 
-
-<div class="wrapper">
-	<div class="header">
-		<div class="logo"><img src="hangman.jpg" alt=""><br><h1> Movie Trivia Hangman!</h1></div>
-	</div>
-	<div class="container">
-		<div class="wordguess">
-			<div id="placeholder"></div>
-		</div>
-	</div>
-	<br> <br>
-	
-		
-		   Wins: <span id="wins"></span>
-		</div>
-		<div class="results_losses">
-		   Losses: <span id="losses"></span>
-		</div>
-		<div id="gameStatus"></div>
-	
-	
-		<div class="chances_left">
-		   Chances Remaining: <span id="chancesremaining"></span>
-		</div>
-		<div class="letters_guessed">
-		 Already Guessed:<br><div id="guessedLetters"></div>
-		</div>
-	
-	
-
-			<br><br>
-
-			
-
-    
-
+<body onload="newGame()">
+    <div class="wrapper">
+        <div class="header">
+            <center>
+                <div class="logo"><img src="hangman.jpg" alt="">
+                    <br>
+                    <h1> Movie Trivia Hangman!</h1></div>
+            </center>
+        </div>
+        <div class="container">
+            <div class="wordguess">
+                <center>
+                    <div id="placeholder"></div>
+                </center>
+            </div>
+        </div>
+        <br>
+        <br> Wins: <span id="wins"></span>
+    </div>
+    <div class="results_losses">
+        Losses: <span id="losses"></span>
+    </div>
+    <div id="gameStatus"></div>
+    <div class="chances_left">
+        Chances Remaining: <span id="chancesremaining"></span>
+    </div>
+    <div class="letters_guessed">
+        Already Guessed:
+        <br>
+        <div id="guessedLetters"></div>
+    </div>
+    <br>
+    <br>
 </body>
+
 </html>

@@ -39,31 +39,29 @@ function newGame() {
         answerArray[i] = "_";
 
         // console.log(answerArray);
-    
-}
+
+    }
     if (remainingLetters > 0) {
         var wordList = answerArray.join(" ");
         // console.log(wordList)
 
         var placeholder = document.getElementById("placeholder");
         placeholder.innerHTML = wordList;
-        
+
 
     }
-    
+
 
 }
-
-
 
 document.onkeypress = function(event) {
     var correct = 0;
     var guess = String.fromCharCode(event.keyCode).toLowerCase();
 
     console.log(guess);
-    console.log (movie);
+    console.log(movie);
 
-    
+
 
     for (var i = 0; i < splitMovie.length; i++) {
 
@@ -73,23 +71,23 @@ document.onkeypress = function(event) {
 
             console.log(correct);
 
-         }
-    }
 
+        }
+
+    }
 
     if (correct === 0) {
 
         chancesLeft--;
 
         console.log(chancesLeft);
-
+        var chancesremining = document.getElementById("chancesremining");
+        chancesremining.innerHTML = chancesLeft;
     }
 
-   
 
 
-
-    if (answerArray.indexOf("_") == -1) {
+   if (answerArray.indexOf("_") == -1) {
 
         wins++;
 
@@ -103,15 +101,10 @@ document.onkeypress = function(event) {
 
         losses++;
 
-    } 
-
     }
 
 
+}
 
-
-  
 
 newGame();
-
-
