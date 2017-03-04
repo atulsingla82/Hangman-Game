@@ -1,4 +1,4 @@
-// create an array of names
+// create an array of movie names
 
 
 var movieList = ["terminator", "starwars", "jaws", "batman", "titanic", "hangman", "inception", "up", "gladiator", "avatar", "goodfellas"];
@@ -8,7 +8,6 @@ var movie;
 var guessedLetters = "";
 var chancesLeft;
 var correct;
-var movieLength;
 var movieString;
 var wins = 0;
 var losses = 0;
@@ -19,65 +18,100 @@ var answerArray = [];
 
 
 
+// new function 
+function newGame() {
 
- // function newGame() {
+    chancesLeft = 10;
+    guessedLetters = "";
+    movie = movieList[Math.floor(Math.random() * movieList.length)];
+    splitMovie = movie.split("");
 
-     chancesLeft = 10;
-     guessedLetters = "";
-     movie = movieList[Math.floor(Math.random() * movieList.length)];
-     splitMovie = movie.split("");
+    // console.log(movie);
+    // console.log(splitMovie);
 
- // console.log(movie);
- // console.log(splitMovie);
+    remainingLetters = movie.length;
+    movieString = movie.substring;
 
-     remainingLetters = movie.length;
-     movieString = movie.substring;
+    // console.log(remainingLetters);
+    // document.write(movie.substring(0,10));
 
- // console.log(remainingLetters);
- // document.write(movie.substring(0,10));
+    for (var i = 0; i < splitMovie.length; i++) {
+        answerArray[i] = "_";
 
-     for (var i = 0; i < splitMovie.length; i++) {
-     answerArray[i] = "_";
+        // console.log(answerArray);
+    
+}
+    if (remainingLetters > 0) {
+        var wordList = answerArray.join(" ");
+        // console.log(wordList)
 
-  console.log(answerArray);
-  }
+        var placeholder = document.getElementById("placeholder");
+        placeholder.innerHTML = wordList;
+        
 
-     if (remainingLetters > 0) {
-     var wordList = answerArray.join(" ");
-  document.write(wordList)
+    }
+    
+
 }
 
- // }
 
 
-     document.onkeyup = function(event) {
-     var correct = 0;
-     var guess = String.fromCharCode(event.keyCode).toLowerCase(); 
-   document.write(guess);
+document.onkeypress = function(event) {
+    var correct = 0;
+    var guess = String.fromCharCode(event.keyCode).toLowerCase();
 
-   for (var i =0; i < movie.length; i++) {
+    console.log(guess);
+    console.log (movie);
 
-   	if (guess == movie.substring(i,i+1)) {
+    
 
-   		correct++;
+    for (var i = 0; i < splitMovie.length; i++) {
 
-   		// console.log(correct);
-   	}
-   	}
-   }
+        if (guess == movie.substring(i, i + 1)) {
 
-  if (correct === 0) {
+            correct++;
 
-    chancesLeft--;
-  }
+            console.log(correct);
 
-  console.log (chancesLeft);
-
- 
+         }
+    }
 
 
+    if (correct === 0) {
+
+        chancesLeft--;
+
+        console.log(chancesLeft);
+
+    }
+
+   
 
 
 
+    if (answerArray.indexOf("_") == -1) {
+
+        wins++;
+
+        // console.log (wins);
+
+
+    }
+
+
+    if (chancesLeft === -1) {
+
+        losses++;
+
+    } 
+
+    }
+
+
+
+
+  
+
+newGame();
 
 
