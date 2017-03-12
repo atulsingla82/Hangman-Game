@@ -1,110 +1,152 @@
 // create an array of movie names
+var wordsList = [
+    "terminator",
+    "starwars",
+    "jaws",
+    "batman",
+    "titanic",
+    "hangman",
+    "inception",
+    "up",
+    "gladiator",
+    "avatar",
+    "goodfellas"
+];
+// console.log(wordsList);
 
 
-var movieList = ["terminator", "starwars", "jaws", "batman", "titanic", "hangman", "inception", "up", "gladiator", "avatar", "goodfellas"];
-// console.log(movieList);
+// Word chosen
+var chosenWord = "";
+// Will break letters into individual letters.
+var lettersInChosenWord = [];
+// Number of blanks based on the  random word picked.
+var numBlanks = 0;
+//Mix of blansk and raight guesses
+var blanksAndSuccesses = [];
+// Holds all the incorrect guesses.
+var wrongGuesses = [];
 
-var movie;
-var guessedLetters = "";
-var chancesLeft;
-var correct;
-var movieString;
+// Game Counters 
 var wins = 0;
-var losses = 0;
-var splitMovie;
-var remainingLetters = 0;
-// set up an array of answers
-var answerArray = [];
+var losses = 0
+var numGuesses = 10;
 
 
 
-// new function 
-function newGame() {
+// Function to start game 
+//========================
 
-    chancesLeft = 10;
-    guessedLetters = "";
-    movie = movieList[Math.floor(Math.random() * movieList.length)];
-    splitMovie = movie.split("");
+function startGame() {
+    numGuesses = 10;
 
-    // console.log(movie);
-    // console.log(splitMovie);
+    // Word Chosen at random 
+    chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+    //Split the chosen word into individual letters.
+    lettersInChosenWord = chosenWord.split("");
+    // Total number of blanks in the word.
+    numBlanks = lettersInChosenWord.length;
 
-    remainingLetters = movie.length;
-    movieString = movie.substring;
+    // console.log(chosenWord);
+    // console.log(lettersInChosenWord);
+    // console.log(numBlanks);
 
-    // console.log(remainingLetters);
-    // document.write(movie.substring(0,10));
+    // RESET the blanks and success at each round .
+    blanksAndSuccesses = [];
+    // RESET the wrong guesses in each round .
+    wrongGuesses = [];
 
-    for (var i = 0; i < splitMovie.length; i++) {
-        answerArray[i] = "_";
-
-        // console.log(answerArray);
-
+    for (var i = 0; i < numBlanks; i++) {
+        blanksAndSuccesses.push("_");
     }
-    if (remainingLetters > 0) {
-        var wordList = answerArray.join(" ");
-        // console.log(wordList)
 
-        var placeholder = document.getElementById("placeholder");
-        placeholder.innerHTML = wordList;
+    // console.log(blanksAndSuccesses);
 
+    // Prints the guesses left to 10
+    document.getElementById("guesses-left").innerHTML = numGuesses;
 
-    }
+    // Prints the "blanks" at the start of the game ;
+    document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
+
+    //
+    document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
 
 }
 
-document.onkeypress = function(event) {
-    var correct = 0;
-    var guess = String.fromCharCode(event.keyCode).toLowerCase();
+// Function to check for letters 
+//===============================
 
-    console.log(guess);
-    console.log(movie);
+function checkLetters(letter) {
+    // Set boolean to check if any letter was found in the chosen word.
+    var letterInWord = false;
 
+    // Run a for loop 
+    for (var i = 0; i < numBlanks; i++) {
 
-
-    for (var i = 0; i < splitMovie.length; i++) {
-
-        if (guess == movie.substring(i, i + 1)) {
-
-            correct++;
-
-            console.log(correct);
-
-
+        if (chosenWord[i] === letter) {
+            // if letter in word is true 
+            letterInWord = true;
         }
 
     }
 
-    if (correct === 0) {
+    if (letterInWord) {
 
-        chancesLeft--;
+        for (i = 0; i < numBlanks; i++) {
 
-        console.log(chancesLeft);
-        var chancesremining = document.getElementById("chancesremining");
-        chancesremining.innerHTML = chancesLeft;
+            if (chosenWord[i] === letter) {
+
+                blanksAndSuccesses[i] = letter;
+            }
+        }
+
+        console.log(blanksAndSuccesses);
+    } else {
+
+        wrongGuesses.push(letter);
+        numGuesses--;
     }
-
-
-
-   if (answerArray.indexOf("_") == -1) {
-
-        wins++;
-
-        // console.log (wins);
-
-
-    }
-
-
-    if (chancesLeft === -1) {
-
-        losses++;
-
-    }
-
 
 }
 
 
-newGame();
+function roundComplete() {
+
+    // console.log("Wins: " + wins + " | Losses:" + losses + "| NumGuesses:" + numGuesses);
+
+    document.getElementById("guesses-left").innerHTML = numGuesses;
+    document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+
+    if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
+    	wins++;
+    	alert("you win !!");
+
+    	document.getElementById("win-counter").innerHTML = wins;
+
+    	startGame();
+    }
+
+    else if (numGuesses === 0) {
+
+    	losses++;
+
+    	alert ("The movie was " + chosenWord);
+
+    	document.getElementById("loss-counter").innerHTML = losses;
+
+    	startGame();
+    }
+}
+startGame();
+
+document.onkeyup = function(event){
+
+	var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+
+	checkLetters(letterGuessed);
+
+	roundComplete();
+};
+
+
