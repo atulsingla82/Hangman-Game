@@ -1,54 +1,56 @@
 body {
-	background-image: url("mario.png");
+    background-image: url("mario.png");
     background-size: 92%
-    
-   
 }
-.header{
-	color: 
+
+h2 {
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    border-color: blue;
 }
-h2{
-	
-	
-	font-family: 'Press Start 2P', cursive;
-	color:white;
-	border-color: blue;
+
+small {
+    color:
 }
-small{
-	color: 
-}
+
 h3 {
-	font-size: 20px;
-	color:white;
+    font-size: 20px;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .jumbotron {
-
-	background-color: transparent;
+    background-color: transparent;
 }
 
-.panel-heading {
-
-	background-color: transparent;
-}
-.guess{
-   
-	background-color: transparent;
-   border: none;
-   color: white;
-   font-family: 'Press Start 2P', cursive;
-
+.guess {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
 }
 
-.wrongguesses,.guessesleft,.wins,.losses{
-float:right;
-background-color: transparent;
-   border-color: transparent;
-   color: white;
-   font-size: 16px;
-   font-family: 'Press Start 2P', cursive;
+.wrongguesses,
+.guessesleft,
+.wins,
+.losses {
+    background-color: transparent;
+    border-color: transparent;
+    color: font-size: 16px;
+    font-family: 'Press Start 2P', cursive;
 }
 
-.ansalert{
-	background-color: red;
+retryBtn {
+    float: left;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: rgba(92, 111, 184, 0);
+    border-color: rgba(76, 174, 76, 0);
+}
+
+.ansalert {
+    background-color: red;
 }

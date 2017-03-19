@@ -1,16 +1,16 @@
 // create an array of movie names
 var wordsList = [
-    "joker",
-    "penguin",
-    "riddler",
-    "batman",
-    "scarecrow",
-    "alfred",
-    "nightwing",
-    "catwoman",
-    "deadshot",
-    "twoface",
-    "robin"
+    "mario",
+    "luigi",
+    "bowser",
+    "wario",
+    "donkeykong",
+    "yoshi",
+    "toad",
+    "peach",
+    "daisy",
+    "blueshell",
+    "birdo"
 ];
 // console.log(wordsList);
 
@@ -32,14 +32,15 @@ var losses = 0
 var numGuesses = 10;
 
 //audio
-// var audio = document.createElement("audio");
-// audio.setAttribute('src', "assets/audio/Batman .m4a");
+var audio = document.createElement("audio");
+audio.setAttribute('src', "assets/audio/mario.mp3");
 
 
 
 // Function to start game 
 //========================
-// audio.play();
+audio.play();
+
 function startGame() {
 
     numGuesses = 10;
@@ -124,38 +125,33 @@ function roundComplete() {
     document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
     if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
-    	wins++;
-    	alert("you win !!");
-       n
+        wins++;
 
-    	document.getElementById("win-counter").innerHTML = wins;
 
-    	startGame();
-    }
 
-    else if (numGuesses === 0) {
+        document.getElementById("win-counter").innerHTML = wins;
 
-    	losses++;
-        $("#alert_template button").after("The answer was "+ chosenWord);
-        $('#alert_template').fadeIn('slow');
-        
+        startGame();
+    } else if (numGuesses === 0) {
 
-    	
+        losses++;
 
-    	document.getElementById("loss-counter").innerHTML = losses;
 
-    	startGame();
+
+
+
+        document.getElementById("loss-counter").innerHTML = losses;
+
+        startGame();
     }
 }
 startGame();
 
-document.onkeyup = function(event){
+document.onkeyup = function(event) {
 
-	var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
 
-	checkLetters(letterGuessed);
+    checkLetters(letterGuessed);
 
-	roundComplete();
+    roundComplete();
 };
-
-
