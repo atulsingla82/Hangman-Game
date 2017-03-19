@@ -1,16 +1,16 @@
 // create an array of movie names
 var wordsList = [
-    "terminator",
-    "starwars",
-    "jaws",
+    "joker",
+    "penguin",
+    "riddler",
     "batman",
-    "titanic",
-    "hangman",
-    "inception",
-    "up",
-    "gladiator",
-    "avatar",
-    "goodfellas"
+    "scarecrow",
+    "alfred",
+    "nightwing",
+    "catwoman",
+    "deadshot",
+    "twoface",
+    "robin"
 ];
 // console.log(wordsList);
 
@@ -31,12 +31,17 @@ var wins = 0;
 var losses = 0
 var numGuesses = 10;
 
+//audio
+// var audio = document.createElement("audio");
+// audio.setAttribute('src', "assets/audio/Batman .m4a");
+
 
 
 // Function to start game 
 //========================
-
+// audio.play();
 function startGame() {
+
     numGuesses = 10;
 
     // Word Chosen at random 
@@ -121,6 +126,7 @@ function roundComplete() {
     if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
     	wins++;
     	alert("you win !!");
+       n
 
     	document.getElementById("win-counter").innerHTML = wins;
 
@@ -130,8 +136,11 @@ function roundComplete() {
     else if (numGuesses === 0) {
 
     	losses++;
+        $("#alert_template button").after("The answer was "+ chosenWord);
+        $('#alert_template').fadeIn('slow');
+        
 
-    	alert ("The movie was " + chosenWord);
+    	
 
     	document.getElementById("loss-counter").innerHTML = losses;
 
