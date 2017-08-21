@@ -31,6 +31,9 @@ var wins = 0;
 var losses = 0
 var numGuesses = 10;
 
+$('.preloader').delay(350).fadeOut(500);
+$body.delay(350).css({'overflow':'visible'});
+
 //audio
 var audio = document.createElement("audio");
 audio.setAttribute('src', "assets/audio/mario.mp3");
